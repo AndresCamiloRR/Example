@@ -1,0 +1,153 @@
+package ui;
+
+import java.util.Scanner;
+import model.ComicShop;
+
+
+/**
+ * Clase principal el proyecto comicsShop.
+ * Desarrollada para el 
+ * @author angievig
+ * @version 1.0
+ * @since April 2022
+ */
+public class MainShop {
+	
+	/**
+	 * store es la conexiOn con la clase Shop en el paquete model
+	 */
+	private ComicShop store;
+	/**
+	 * sc es el objeto que permite leer informaciOn digitada por el usuario
+	 */
+	private Scanner sc;
+	
+	/**
+	 * Constructor de la clase, no recibe prametros.  
+	 * El mEtodo inicializa el objeto lector 
+	 */
+	public MainShop() {
+		sc= new Scanner(System.in);
+	}
+	
+
+	public static void main (String[] a){
+		// creando un objeto de la clase principal
+		MainShop obPpal = new MainShop();
+		
+		//Llamando el método que inicializa la tienda pidiendo datos al usuario
+		obPpal.initShop();
+		
+		// variable para leer la entrada
+		int option= 0;
+		
+		//ciclo para ejecutar el menu mientras que el usuario no
+		// elija la opciOn para salir (0)
+		do {
+		    option =obPpal.showMenu();
+		    obPpal.answerOption(option);
+		}while (option !=0);
+
+
+	}
+
+
+	/**
+	 * Metodo que se encarga de llamar a los mEtodos que resuelven cada uno de los 
+	 * requerimientos de la aplicaciOn 
+	 * @param userOption, int es el nUmero ingresado por el usuario (no ha sido validado) 
+	 */
+	public void answerOption(int userOption) {
+		switch(userOption) {
+		case 0: 
+			System.out.println("cerrando la aplicaciOn, bye");
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3: 
+			break;
+		case 4: 
+			registerComic();
+			break;
+		case 5: 
+		System.out.println("La informaciOn de la tienda es la siguiente:");
+		System.out.println(store.toString());
+		}
+		
+		
+	}
+	
+	/**
+	* The method will read the inputs inserted by the user, save them in variables, call Register Comic 
+	* method from store and insert the variables as parameters
+	*/
+	public void registerComic(){
+		
+		
+		if(store.EmptyPosition()!=-1){
+			
+			String name;
+			int numCopiesForSale;
+			double price;
+			
+			System.out.println("Insert the name of the comic");
+		
+			name=sc.next();
+			sc.nextLine();
+		
+			System.out.println("Insert the number of copies for sale");
+		
+			numCopiesForSale=sc.nextInt();
+			sc.nextLine();
+		
+			System.out.println("Insert the price of the comic");
+			price=sc.nextDouble();
+			sc.nextLine();
+		
+			store.RegisterComic(name, numCopiesForSale, price);
+			
+			System.out.println("The comic has been registered, if you want to see his info, choose option 5 in the menu ;D");
+			
+		}else{
+			
+			System.out.println("Sorry but there's no space for more comics :c");
+		}
+	}
+
+
+	/**
+	 * Metodo que permite crear instancias de los objetos con informaciOn ingresada
+	 * por el usuario
+	 */
+	public void initShop() {
+		System.out.println("Bienvenido a la tienda de Comics de Stuart, digite el nit");
+		String nit= sc.nextLine();
+		store = new ComicShop(nit);
+		
+		
+		
+	}
+	/**
+	 * Metodo que muestra el menu de la aplicaciOn, a este metod hace falta implementar la validaciOn
+	 * del valor ingresado por el usuario
+	 * @return input, int es la opciOn elegida por el usuario
+	 */
+	public int showMenu() {
+		int input;
+		System.out.println("\n\nMenu de la Tienda, digite una opciOn\n"+ 
+		                    "(1) Vender un comic\n" +
+		                    "(2) Mostrar la cantidad de dinero en caja\n" +
+		                    "(3) Consultar la disponibilidad de un comic\n"+
+		                    "(4) Registrar un comic para la venta\n"+
+		                    "(5) Mostrar los datos de la tienda\n"+
+		                    "(0) Para salir"
+	
+		);
+		input = sc.nextInt();
+		sc.nextLine();
+		return input;
+	}
+
+}
