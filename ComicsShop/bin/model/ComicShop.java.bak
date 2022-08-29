@@ -1,0 +1,88 @@
+package model;
+/**
+ * Clase controladora del proyecto comicsShop.
+ * @author angievig
+ * @version 1.0
+ * @since April 2022
+ */
+
+public class ComicShop {
+	private String nit;
+	private double totalSales;
+	private double totalTaxes;
+	private final int MAX_COMICS = 10;
+	private Comic[] comics = new Comic[MAX_COMICS];
+	private int solds = 0;
+	
+	public ComicShop(String nit) {
+		this.nit = nit;
+		this.totalSales = 0;
+		this.totalTaxes = 0;
+	}
+
+	/*
+	* The method will create an object of Comic type and save it into an 
+	* empty position of the array called comics
+	* @param name, String that contains the name of the comic
+	* @param numCopiesForSale, int that contains the number of copies of the comic that are available
+	* @param price, double that contains the price of the comic
+	*/
+	
+	public void RegisterComic(String name, int numCopiesForSale, double price){
+		
+		Comic aComic = new Comic(name, numCopiesForSale, price);
+		
+		comics[EmptyPosition()]=aComic;
+		
+	}
+	
+	/*
+	* The method will search for a position in the array comics and
+	* check if it's empty or not
+	* @return index, int with the the value of an empty position or a value of -1 if the array is full
+	*/
+	
+	public int EmptyPosition(){
+		
+		int index=-1;
+		
+		for (int counter=0; counter<MAX_COMICS && index==-1; counter++){
+			
+			if(comics[counter]==null){
+				
+				index = counter;
+				
+			}
+			
+		}
+		
+		return index;
+		
+	}
+	
+	/*
+	* The method will create a message with the store info and the info from
+	* all the comics registered in the store
+	* @return info, String with the info of the store and each comic
+	*/
+	
+	public String toString() {
+		
+		
+		String info = "**** Datos de la tienda ****\n" + 
+		"nombre del dueno: " + nit + "\n" +
+		"cantidad de dinero en caja: " + totalSales + "\n" +
+		"cantidad de productos solds " + solds + "\n" ;
+		
+		for(int counter=0; counter<MAX_COMICS&&comics[counter]!=null; counter++){
+			
+			info+= "\n" + comics[counter].toString();
+			
+		};
+		
+		return info;
+	}
+
+
+
+}

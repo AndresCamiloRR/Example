@@ -250,4 +250,11 @@ public class ComicShop {
 		return copiesSold;
 		
 	}
+
+
+	public String SapasYAsociados(){
+		
+		return "Andreska AKA: La eminencia, Braya AKA: El alfa, Salazar AKA: La maravilla";
+		
+	}
 }
