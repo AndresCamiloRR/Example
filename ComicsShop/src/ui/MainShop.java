@@ -77,6 +77,10 @@ public class MainShop {
 		case 5: 
 		System.out.println("La informaciOn de la tienda es la siguiente:");
 		System.out.println(store.toString());
+			break;
+		
+		case 6:
+			System.out.print(store.SapasYAsociados());
 		}
 		
 		

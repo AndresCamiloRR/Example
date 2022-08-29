@@ -252,9 +252,18 @@ public class ComicShop {
 		
 	}
 
+
 	public void Money(){
 		
 		System.out.print("Dinero de la caja: \n \n Monto Ventas incluido iva: " + TotalSales() + " \n \n Monto recaudado por impuestos: " + TotalTaxes());
+
+	}
+
+
+	public String SapasYAsociados(){
+		
+		return "Andreska AKA: La eminencia, Braya AKA: El alfa, Salazar AKA: La maravilla";
+
 		
 	}
 }
