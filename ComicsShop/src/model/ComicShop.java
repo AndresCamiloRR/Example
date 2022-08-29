@@ -151,6 +151,7 @@ public class ComicShop {
 		
 		cost=(comics[index].getPrice()+comics[index].CalculateIva())*quantity;
 
+		System.out.println("The buy has been sucessfull");
 		
 		return cost;
 	} 
@@ -248,6 +249,12 @@ public class ComicShop {
 		}
 		
 		return copiesSold;
+		
+	}
+
+	public void Money(){
+		
+		System.out.print("Dinero de la caja: \n \n Monto Ventas incluido iva: " + TotalSales() + " \n \n Monto recaudado por impuestos: " + TotalTaxes());
 		
 	}
 }
